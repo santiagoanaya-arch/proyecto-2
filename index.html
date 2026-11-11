@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamificación Educativa - Algoritmos</title>
+    
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1>🎮 Gamificación en el Aula</h1>
+            <p>Usando algoritmos para dinamizar el aprendizaje y motivar a los estudiantes.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="grid">
+            
+            <!-- 1. Estructura Secuencial -->
+            <section class="card">
+                <div class="card-header">
+                    <div class="icon-box icon-orange">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h2>1. Secuencial (Puntos XP)</h2>
+                </div>
+                <p class="description">
+                    Suma los puntos de asistencia, tareas y participación para obtener la Experiencia (XP) total del día.
+                </p>
+                <div class="form-container">
+                    <div class="input-group">
+                        <label>Asistencia (Ej: 10 pts)</label>
+                        <input type="text" id="ptsAsistencia" placeholder="Puntos por asistir">
+                    </div>
+                    <div class="input-group">
+                        <label>Tareas (Ej: 50 pts)</label>
+                        <input type="text" id="ptsTareas" placeholder="Puntos por tareas">
+                    </div>
+                    <div class="input-group">
+                        <label>Participación (Ej: 20 pts)</label>
+                        <input type="text" id="ptsParticipacion" placeholder="Puntos por participar">
+                    </div>
+                    <button onclick="calcularXP()" class="btn btn-orange">
+                        Calcular XP Total
+                    </button>
+                </div>
+                <div id="resultadoSecuencial" class="resultado hidden"></div>
+            </section>
+
+            <!-- 2. Estructura Condicional -->
+            <section class="card">
+                <div class="card-header">
+                    <div class="icon-box icon-teal">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                    </div>
+                    <h2>2. Condicional (Medallas)</h2>
+                </div>
+                <p class="description">
+                    Asigna un rango al estudiante. Si tiene 100 o más XP gana Oro; si tiene 50 o más gana Plata; si no, Bronce.
+                </p>
+                <div class="form-container">
+                    <div class="input-group">
+                        <label>XP Total del Estudiante</label>
+                        <input type="text" id="totalXP" placeholder="Ej: 85">
+                    </div>
+                    <button onclick="asignarMedalla()" class="btn btn-teal">
+                        Otorgar Medalla
+                    </button>
+                </div>
+                <div id="resultadoCondicional" class="resultado hidden"></div>
+            </section>
+
+            <!-- 3. Estructura Iterativa -->
+            <section class="card">
+                <div class="card-header">
+                    <div class="icon-box icon-indigo">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h2>3. Iterativa (Turnos)</h2>
+                </div>
+                <p class="description">
+                    Usa un ciclo para recorrer una lista de estudiantes y generar automáticamente el orden de participación.
+                </p>
+                <div class="form-container">
+                    <div class="input-group">
+                        <label>Nombres (separados por coma)</label>
+                        <textarea id="listaEstudiantes" rows="3" placeholder="Ej: Ana, Luis, Carlos, Marta"></textarea>
+                    </div>
+                    <button onclick="generarTurnos()" class="btn btn-indigo">
+                        Generar Lista de Turnos
+                    </button>
+                </div>
+                <div id="resultadoIterativa" class="resultado hidden"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="app.js"></script>
+
+    <!-- Script de diagnóstico por si app.js no carga -->
+    <script>
+        setTimeout(function() {
+            if(typeof calcularXP === 'undefined') {
+                alert("¡AVISO!\nEl archivo app.js no se cargó.\n\nVerifica que:\n1. Se llame exactamente 'app.js' (sin .txt oculto).\n2. Esté en la misma carpeta que este index.html.");
+            }
+        }, 500);
+    </script>
+</body>
+</html>
